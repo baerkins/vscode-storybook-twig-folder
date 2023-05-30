@@ -1,0 +1,78 @@
+{
+	"name": "new-storybook-twig-folder",
+	"displayName": "New Storybook Twig Folder",
+	"description": "Create a twig, css, and stories.js file with the same name of a new folder",
+	"version": "0.1.0",
+	"publisher": "baerkins",
+	"keywords": [
+		"storybook",
+		"create file"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/baerkins/vscode-fractal-folder.git"
+	},
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "New Storybook HTML Folder",
+			"properties": {
+        "newStorybookHtmlFolder.useParentDirectoryForStorybookTitles": {
+          "type": "boolean",
+					"default": false,
+					"description": "Use Parent Folders for Story Organization"
+				},
+        "newStorybookHtmlFolder.useParentDirectoryName": {
+					"type": "string",
+					"default": "",
+					"description": "Name of base parent folder. Will autogenerate a title in stories based on folder organization for folders created within this directory."
+				},
+				"newStorybookHtmlFolder.cssFileExtension": {
+					"type": "string",
+					"default": "css",
+					"description": "Type of css file to create, such as 'css' or 'scss'"
+				},
+				"newStorybookHtmlFolder.storybookComponentExportSuffix": {
+					"type": "string",
+					"default": "Template",
+					"description": "Suffix for storybook export"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "createStorybookHtmlFolder",
+				"title": "Create New Storybook HTML Folder"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "createStorybookHtmlFolder",
+					"group": "1_modification"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^9.0.0",
+		"@types/node": "^16.11.7",
+		"eslint": "^8.2.0",
+		"typescript": "^4.4.4",
+		"vscode": "^1.1.30"
+	},
+	"dependencies": {
+		"@types/vscode": "^1.62.0"
+	}
+}
