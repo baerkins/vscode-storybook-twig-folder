@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const vscode = require('vscode');
-const { ucFirst, camelCaseToUcWords } = require('./lib/utils');
+const { ucFirst, fileNameToCamelCase, fileNameSpacedToUppercase } = require('./lib/utils');
 const { getDefaultStoryContent } = require('./lib/defaultStoryContent');
 
 const defaultjs = `module.exports = {
@@ -76,18 +76,22 @@ function activate(context) {
 
               if (err) throw err;
 
-              const componentFileName   = dirName.slice();
-              const componentName       = ucFirst(componentFileName, true);
-              const componentSuffix     = settings.storybookComponentExportSuffix || 'Template';
-              const componentSingleName = componentSuffix + 'Template';
-              let   componentTitle      = ucFirst(componentFileName, true, true);
+              const componentRawName     = dirName.slice();
+              const componentFileName    = componentRawName;
+              const componentCamelCase   = fileNameToCamelCase(componentRawName);
+              const componentName        = ucFirst(componentCamelCase, true);
+              const componentSuffix      = settings.storybookComponentExportSuffix || 'Default';
+              const componentSingleName  = componentSuffix + 'Template';
+              const componentSpacedCamel = componentRawName.replace(/-([a-z])/g, function (g) { return ' ' + g[1].toUpperCase(); });
+              let   componentTitle       = ucFirst(componentSpacedCamel, true, true);
 
               if ( settings.useParentDirectoryForStorybookTitles && settings.useParentDirectoryName !== '' ) {
                 const parentBase = settings.useParentDirectoryName;
+
                 if (newPath.includes(parentBase)) {
                   const parentBaseTitle = newPath.slice(newPath.indexOf(parentBase) + parentBase.length);
                   const names           = parentBaseTitle.split('/').filter(n => n && n != '');
-                  componentTitle        = names.map(n => ucFirst(n, true, true)).join('/');
+                  componentTitle        = names.map(n => fileNameSpacedToUppercase(n)).join('/');
                 }
               }
 
