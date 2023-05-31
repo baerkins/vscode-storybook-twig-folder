@@ -12,7 +12,7 @@ Configure file creation in settings:
 
 **Storybook Component Export Suffix:** Suffix to add to default storybook export name *Default: `Template`*
 
-**Use Parent Directory For Storybook Titles:** Check to allow component titles to reflect their directory structure within a 'parent' directory. Example: if `patterns` is set as `Use Parent Directory Name`, component titles will be altered to match folder structure within `patterns`, so creating a "WideCard" folder in `patterns/components/cards` will result in the storybook title `Patterns/Components/Cards/Wide Card`.
+**Use Parent Directory For Storybook Titles:** Check to allow component titles to reflect their directory structure within a 'parent' directory. Example: if `patterns` is set as `Use Parent Directory Name`, component titles will be altered to match folder structure within `patterns`, so creating a "WideCard" folder in `patterns/components/cards` will result in the storybook title `Components/Cards/Wide Card`.
 
 **Use Parent Directory Name:** Name of 'parent' directory to check for in path.
 
