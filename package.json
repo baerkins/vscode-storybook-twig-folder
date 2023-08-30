@@ -2,7 +2,7 @@
 	"name": "new-storybook-twig-folder",
 	"displayName": "New Storybook Twig Folder",
 	"description": "Create a twig, css, and stories.js file with the same name of a new folder",
-	"version": "0.1.2",
+	"version": "0.2.0",
 	"publisher": "baerkins",
 	"keywords": [
 		"storybook",
@@ -40,9 +40,14 @@
 					"default": "css",
 					"description": "Type of css file to create, such as 'css' or 'scss'"
 				},
+				"newStorybookHtmlFolder.storybookComponentImportSuffix": {
+					"type": "string",
+					"default": "Template",
+					"description": "Suffix for storybook import name"
+				},
 				"newStorybookHtmlFolder.storybookComponentExportSuffix": {
 					"type": "string",
-					"default": "Default",
+					"default": "",
 					"description": "Suffix for storybook export"
 				}
 			}

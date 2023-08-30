@@ -76,14 +76,15 @@ function activate(context) {
 
               if (err) throw err;
 
-              const componentRawName     = dirName.slice();
-              const componentFileName    = componentRawName;
-              const componentCamelCase   = fileNameToCamelCase(componentRawName);
-              const componentName        = ucFirst(componentCamelCase, true);
-              const componentSuffix      = settings.storybookComponentExportSuffix || 'Default';
-              const componentSingleName  = componentSuffix + 'Template';
-              const componentSpacedCamel = componentRawName.replace(/-([a-z])/g, function (g) { return ' ' + g[1].toUpperCase(); });
-              let   componentTitle       = ucFirst(componentSpacedCamel, true, true);
+              const componentRawName       = dirName.slice();
+              const componentFileName      = componentRawName;
+              const componentCamelCase     = fileNameToCamelCase(componentRawName);
+              const componentName          = ucFirst(componentCamelCase, true);
+              const componentImportSuffix  = settings.storybookComponentImportSuffix || 'Template';
+              const componentSuffix        = settings.storybookComponentExportSuffix || '';
+              const componentSingleName    = componentSuffix + 'Template';
+              const componentSpacedCamel   = componentRawName.replace(/-([a-z])/g, function (g) { return ' ' + g[1].toUpperCase(); });
+              let   componentTitle         = ucFirst(componentSpacedCamel, true, true);
 
               if ( settings.useParentDirectoryForStorybookTitles && settings.useParentDirectoryName !== '' ) {
                 const parentBase = settings.useParentDirectoryName;
@@ -95,7 +96,7 @@ function activate(context) {
                 }
               }
 
-              const storyContent = getDefaultStoryContent(componentName, componentFileName, componentTitle, componentSingleName);
+              const storyContent = getDefaultStoryContent(`${componentName}${componentImportSuffix}`, componentFileName, componentTitle, componentSingleName);
 
               // Create twig file
               fs.writeFile(path.resolve(newPath, `${componentFileName}.twig`), '', function (err) {
