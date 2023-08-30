@@ -2,7 +2,7 @@
 	"name": "new-storybook-twig-folder",
 	"displayName": "New Storybook Twig Folder",
 	"description": "Create a twig, css, and stories.js file with the same name of a new folder",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"publisher": "baerkins",
 	"keywords": [
 		"storybook",

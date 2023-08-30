@@ -81,8 +81,8 @@ function activate(context) {
               const componentCamelCase     = fileNameToCamelCase(componentRawName);
               const componentName          = ucFirst(componentCamelCase, true);
               const componentImportSuffix  = settings.storybookComponentImportSuffix || 'Template';
-              const componentSuffix        = settings.storybookComponentExportSuffix || '';
-              const componentSingleName    = componentSuffix + 'Template';
+              const componentSuffix        = settings.storybookComponentExportSuffix || false;
+              const componentSingleName    = componentSuffix && componentSuffix !== '' ? componentSuffix : componentName;
               const componentSpacedCamel   = componentRawName.replace(/-([a-z])/g, function (g) { return ' ' + g[1].toUpperCase(); });
               let   componentTitle         = ucFirst(componentSpacedCamel, true, true);
 
