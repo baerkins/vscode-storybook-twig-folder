@@ -10,7 +10,9 @@ Configure file creation in settings:
 
 **CSS File Extension:** The extension for css. Extension name only without a proceeded `.` *Default: `css`*
 
-**Storybook Component Export Suffix:** Suffix to add to default storybook export name *Default: `Template`*
+**Storybook Component Import Suffix:** Suffix added to component import name. *Default: `Template`*
+
+**Storybook Component Default Export Name:** Default name for storybook export. Leave empty to use component name, or add a value for the default export name. *Default: ``*
 
 **Use Parent Directory For Storybook Titles:** Check to allow component titles to reflect their directory structure within a 'parent' directory. Example: if `patterns` is set as `Use Parent Directory Name`, component titles will be altered to match folder structure within `patterns`, so creating a "WideCard" folder in `patterns/components/cards` will result in the storybook title `Components/Cards/Wide Card`.
 

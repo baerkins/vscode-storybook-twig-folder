@@ -45,10 +45,10 @@
 					"default": "Template",
 					"description": "Suffix for storybook import name"
 				},
-				"newStorybookHtmlFolder.storybookComponentExportSuffix": {
+				"newStorybookHtmlFolder.storybookComponentDefaultExportName": {
 					"type": "string",
 					"default": "",
-					"description": "Suffix for storybook export"
+					"description": "Default export name if folders are preferred. If empty, component name will be used as the export."
 				}
 			}
 		},
