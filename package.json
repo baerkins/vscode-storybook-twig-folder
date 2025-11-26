@@ -13,7 +13,7 @@
 		"url": "https://github.com/baerkins/vscode-storybook-twig-folder"
 	},
 	"engines": {
-		"vscode": "^1.31.0"
+		"vscode": "^1.91.0"
 	},
 	"categories": [
 		"Other"
