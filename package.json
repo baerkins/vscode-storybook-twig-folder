@@ -18,37 +18,96 @@
 	"categories": [
 		"Other"
 	],
-	"main": "./extension.js",
+	"main": "./out/extension.js",
   "activationEvents": [],
 	"contributes": {
 		"configuration": {
 			"type": "object",
 			"title": "New Storybook HTML Folder",
 			"properties": {
-        "newStorybookHtmlFolder.useParentDirectoryForStorybookTitles": {
-          "type": "boolean",
-					"default": false,
-					"description": "Use Parent Folders for Story Organization"
+				"newStorybookHtmlFolder.OrganizeComponents": {
+					"type": "boolean",
+					"default": true,
+          "order": 1,
+					"description": "If checked, Story titles will automatically include their parent folder names as categories."
 				},
-        "newStorybookHtmlFolder.useParentDirectoryName": {
+        "newStorybookHtmlFolder.OrganizeFromParentDirectoryName": {
 					"type": "string",
 					"default": "",
-					"description": "Name of base parent folder. Will autogenerate a title in stories based on folder organization for folders created within this directory."
+					"order": 2,
+					"description": "Comma seperated list of parent folders that create category groups in the Storybook sidebar. Will autogenerate a title in stories file based on folder organization for folders created within these directory."
 				},
-				"newStorybookHtmlFolder.cssFileExtension": {
-					"type": "string",
-					"default": "css",
-					"description": "Type of css file to create, such as 'css' or 'scss'"
+				"newStorybookHtmlFolder.OmitParentFolderFromTitle": {
+					"type": "boolean",
+					"default": true,
+          "order": 3,
+					"description": "If checked, the parent folder name from 'Organcize From Parent Directory Name' will be omitted from the story title."
 				},
-				"newStorybookHtmlFolder.storybookComponentImportSuffix": {
+				"newStorybookHtmlFolder.addStoriesJS": {
+					"type": "boolean",
+					"default": true,
+          "order": 4,
+					"description": "Add .stories.js file"
+				},
+        "newStorybookHtmlFolder.addStoriesTS": {
+					"type": "boolean",
+					"default": false,
+          "order": 5,
+					"description": "Add .stories.ts file"
+				},
+				"newStorybookHtmlFolder.addTwigFile": {
+					"type": "boolean",
+					"default": true,
+          "order": 6,
+					"description": "Add twig file"
+				},
+				"newStorybookHtmlFolder.addHtmlFile": {
+					"type": "boolean",
+					"default": false,
+          "order": 7,
+					"description": "Add html file"
+				},
+				"newStorybookHtmlFolder.addCssFile": {
+					"type": "boolean",
+					"default": true,
+          "order": 8,
+					"description": "Add css file"
+				},
+        "newStorybookHtmlFolder.addJsFile": {
+					"type": "boolean",
+					"default": true,
+          "order": 9,
+					"description": "Add js file"
+				},
+        "newStorybookHtmlFolder.addPcssFile": {
+					"type": "boolean",
+					"default": false,
+          "order": 10,
+					"description": "Add pcss file"
+				},
+        "newStorybookHtmlFolder.addSassFile": {
+					"type": "boolean",
+					"default": false,
+          "order": 11,
+					"description": "Add sass file"
+				},
+        "newStorybookHtmlFolder.addScssFile": {
+					"type": "boolean",
+					"default": false,
+          "order": 12,
+					"description": "Add scss file"
+				},
+				"newStorybookHtmlFolder.ComponentImportSuffix": {
 					"type": "string",
 					"default": "Template",
-					"description": "Suffix for storybook import name"
+					"description": "Suffix for storybook import name",
+					"order": 13
 				},
-				"newStorybookHtmlFolder.storybookComponentDefaultExportName": {
+				"newStorybookHtmlFolder.ImportEngine": {
 					"type": "string",
-					"default": "",
-					"description": "Default export name if folders are preferred. If empty, component name will be used as the export."
+					"default": "@storybook/html-vite",
+					"description": "If generating typescript stories, this value will be used to generate the import statement for Storybook's Meta and StoryObj types.",
+					"order": 14
 				}
 			}
 		},
@@ -68,14 +127,22 @@
 		}
 	},
 	"scripts": {
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "node ./node_modules/vscode/bin/test"
+		"vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
 	},
 	"devDependencies": {
-		"@types/mocha": "^9.0.0",
-		"@types/node": "^16.11.7",
-		"eslint": "^8.2.0",
-		"typescript": "^4.4.4",
-		"vscode": "^1.1.30"
+		"@types/vscode": "^1.91.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
 	}
 }
