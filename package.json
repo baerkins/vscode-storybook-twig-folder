@@ -41,7 +41,7 @@
 					"type": "boolean",
 					"default": true,
           "order": 3,
-					"description": "If checked, the parent folder name from 'Organcize From Parent Directory Name' will be omitted from the story title."
+					"description": "If checked, the parent folder name from 'Organize From Parent Directory Name' will be omitted from the story title."
 				},
 				"newStorybookHtmlFolder.addStoriesJS": {
 					"type": "boolean",
